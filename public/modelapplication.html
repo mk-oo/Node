@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="mainstyle.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <title>FAME-Model</title>
+    <link rel="shortcut icon" href="" />
+    <style>
+        body {
+            background-color: rgb(var(--primary), 0.3);
+        }
+        
+        .intro {
+            width: 60%;
+            margin-left: 20%;
+            padding: 15px 0;
+        }
+        
+        .intro h2 {
+            font-size: 50px;
+            font-family: 'Playfair Display', serif;
+            margin: 10px 0 25px 0;
+            text-align: center;
+        }
+        
+        .maininfo,
+        .photosub,
+        .videosub,
+        .meas {
+            width: 60%;
+            margin-left: 20%;
+            height: max-content;
+            border-radius: 15px;
+            box-shadow: -1px 5px 5px rgba(0, 0, 0, 0.3), 5px -1px 5px rgba(0, 0, 0, 0.2);
+            background-color: rgb(var(--secondry), 0.1);
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .maininfo h2,
+        .photosub h2,
+        .videosub h2,
+        .meas h2 {
+            text-align: center;
+            letter-spacing: 1px;
+            padding: 10px 0 20px 0;
+        }
+        
+        .meas input,
+        .meas select {
+            width: 40%;
+            margin: 20px 15px;
+        }
+        
+        .maininfo div input,
+        .maininfo div select {
+            width: 40%;
+            margin: 20px 1%;
+        }
+        
+        .maininfo input {
+            width: 83%;
+            margin: 20px 5% 20px 8.5%;
+            vertical-align: middle;
+        }
+        
+        input,
+        select {
+            padding: 5px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            height: 50px;
+            box-shadow: -1px 5px 5px rgba(0, 0, 0, 0.3), 5px -1px 5px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+        
+        .gender {
+            display: flex;
+            height: 65px;
+            width: 100%;
+            margin: 0 0 20px 0;
+        }
+        
+        .study {
+            margin-top: 10px;
+        }
+        
+        .gender div input {
+            box-shadow: none;
+            width: 20px;
+            margin-top: 0;
+        }
+        
+        .gender div {
+            width: 41.5%;
+            text-align: start;
+            margin-left: 9%;
+            font-size: 20px;
+        }
+        
+        .gender div p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        form {
+            text-align: center;
+        }
+        
+        form button {
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.3), 2px -1px 2px rgba(0, 0, 0, 0.2);
+            background-color: #000000;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .photosub p,
+        .videosub p {
+            text-align: start;
+            width: 70%;
+            margin: 0 12% 15px 12%;
+        }
+        
+        .photosub div {
+            margin: 0 6% 3% 6%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .photosub .image-box {
+            width: 300px;
+            height: 350px;
+            position: relative;
+        }
+        
+        .image-box h6 {
+            color: #000000;
+        }
+        
+        .photosub input,
+        .videosub input {
+            display: none;
+        }
+        
+        .photosub label {
+            position: absolute;
+            bottom: 5px;
+            color: grey;
+            background: #ffffff;
+            width: 50%;
+            border-radius: 5px;
+            min-height: max-content;
+            cursor: pointer;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.192);
+            font-size: 20px;
+        }
+        
+        .videosub label {
+            background: #ffffff;
+            color: gray;
+            width: 50%;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            min-height: max-content;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.192);
+            font-size: 25px;
+            margin: 10px 0 30px 0;
+        }
+        
+        .videosub {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .videosub .line {
+            width: 80%;
+            border-bottom: gray solid 1px;
+            margin-bottom: 20px;
+        }
+        
+        .one {
+            background-image: url(img/s1.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .two {
+            background-image: url(img/s1.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .three {
+            background-image: url(img/s1.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .four {
+            background-image: url(img/s1.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .image-box input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: auto;
+            box-shadow: none;
+        }
+        /* Chrome, Safari, Edge, Opera */
+        
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /* Firefox */
+        
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        
+        #headerPopup,
+        #headerPopup1 {
+            width: 75%;
+            margin: 0 auto;
+        }
+        
+        #headerPopup iframe,
+        #headerPopup1 iframe {
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        @media only screen and (max-width: 650px) {
+            .meas input,
+            .meas select,
+            .maininfo div input,
+            .maininfo div select {
+                width: 83%;
+            }
+            .maininfo,
+            .meas,
+            .photosub,
+            .videosub {
+                width: 97%;
+                margin-left: 1.5%;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                max-width: 100%;
+            }
+            .gender {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+                margin-bottom: 0;
+            }
+            .maininfo .gender div input,
+            .maininfo .gender div select {
+                width: auto;
+                height: auto;
+            }
+            .gender div {
+                width: 100%;
+            }
+            .gender div p {
+                margin-bottom: 15px;
+            }
+            .maininfo .gender div input {
+                margin: 0;
+            }
+            .photosub div {
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        /**********************************************/
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar-->
+    <nav id="nav" class="navbar navbar-expand-lg sticky-top navbar-light">
+        <h1><a style="font-size: 60px; color: black;" href="index.html">FAME</a></h1>
+        <button style="outline: none; box-shadow: none;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <a class="nav-link" href="model.html">MODELING</a>
+                <a class="nav-link" href="business.html">BUSINESS
+                    PARTNERSHIP</a>
+                <a class="nav-link disabled" href="#" style="border-right: none;">DIGITAL SHOW</a>
+            </ul>
+        </div>
+    </nav>
+    <!--main text-->
+    <div class="intro">
+        <h2>Don't hesitate! Apply now.</h2>
+    </div>
+    <!--information all required-->
+    <form action="" method="POST">
+        <!--main info-->
+        <div class="maininfo">
+            <h2>Main information</h2>
+            <div>
+                <input type="text" name="fname" id="fname" placeholder="First name" required>
+                <input type="text" name="lname" id="lname" placeholder="Last name" required>
+            </div>
+            <input type="text" name="insta" id="insta" placeholder="Instagram user name" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="number" name="mobile" id="mobile" placeholder="Mobile number" required>
+            <div>
+                <input type="text" name="address" id="address" placeholder="Address" required>
+                <select name="city" id="city" required>
+                    <option value="" disabled selected hidden>City</option>
+                    <option value="Alexandria">Alexandria</option>
+                    <option value="Aswan">Aswan</option>
+                    <option value="Asyut">Asyut</option>
+                    <option value="Beheira">Beheira</option>
+                    <option value="Beni Suef">Beni Suef</option>
+                    <option value="Cairo">Cairo</option>
+                    <option value="Dakahlia">Dakahlia</option>
+                    <option value="Damietta">Damietta</option>
+                    <option value="Faiyum">Faiyum</option>
+                    <option value="Gharbia">Gharbia</option>
+                    <option value="Giza">Giza</option>
+                    <option value="Ismailia">Ismailia</option>
+                    <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                    <option value="Luxor">Luxor</option>
+                    <option value="Matruh">Matruh</option>
+                    <option value="Minya">Minya</option>
+                    <option value="Monufia">Monufia</option>
+                    <option value="New Valley">New Valley</option>
+                    <option value="North Sinai">North Sinai</option>
+                    <option value="Port Said">Port Said</option>
+                    <option value="Qalyubia">Qalyubia</option>
+                    <option value="Qena">Qena</option>
+                    <option value="Red Sea">Red Sea</option>
+                    <option value="Sharqia">Sharqia</option>
+                    <option value="Sohag">Sohag</option>
+                    <option value="South Sinai">South Sinai</option>
+                    <option value="Suez">Suez</option>
+                </select>
+            </div>
+            <div class="gender">
+                <div>
+                    <p>Gender:</p>
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <input type="date" id="birthday" name="birthday" placeholder="Birthday" required>
+            </div>
+            <div class="gender study">
+                <div>
+                    <p>Are you study?</p>
+                    <input type="radio" id="study" name="study" value="studing" required>
+                    <label for="study">Yes &#160;&#160;</label>
+                    <input type="radio" id="nostudy" name="study" value="notstudy">
+                    <label for="notstudy">No</label>
+                </div>
+                <select name="school" id="school" required>
+                    <option value="" disabled selected hidden>Degree</option>
+                    <option value="high school">High school</option>
+                    <option value="collage">Collage</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="Bachelor's Degree">Bachelor</option>
+                </select>
+            </div>
+        </div>
+        <!--measurements-->
+        <div class="meas">
+            <h2>Measurements</h2>
+            <div>
+                <input type="number" id="height" name="height" placeholder="Height in cm" required>
+                <input type="number" id="weight" name="weight" placeholder="Weight in kg" required>
+            </div>
+            <div>
+                <select name="hairlength" id="hairlength" required>
+                    <option value="" disabled selected hidden>Hair length</option>
+                    <option value="short">short</option>
+                    <option value="medium">medium</option>
+                    <option value="long">long</option>
+                </select>
+                <select name="haircolor" id="haircolor" required>
+                    <option value="" disabled selected hidden>Hair color</option>
+                    <option value="Black">Black</option>
+                    <option value="Blond">Blond</option>
+                    <option value="Grey">Grey</option>
+                    <option value="Black">Black</option>
+                </select>
+            </div>
+            <div>
+                <select name="eye" id="eye" required>
+                    <option value="" disabled selected hidden>Eye color</option>
+                    <option value="Black">Black</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                </select>
+                <input type="number" id="shoesize" name="shoesize" placeholder="Shoe size 'Euro Size'" required>
+            </div>
+        </div>
+        <!--photo sub-->
+        <div class="photosub">
+            <h2>Photo submission</h2>
+            <p>
+                Please submit four photos of yourself: full-length, waist-up, close-up, and side. Do your best to replicate the sample images below. These don't need to be professionally done, but there are some guidelines: Shoot your photos outdoors in natural daylight
+                but not direct sunlight. Remember, we're looking for natural so no makeup, wear your hair down, and no smiles, please. This is like a passport photo to document your look for us.
+            </p>
+            <div>
+                <div class="image-box one">
+                    <h6>full length</h6>
+                    <input type="file" accept="image/*" id="fullimage" name="fullimage">
+                    <label for="fullimage">Upload</label>
+                </div>
+                <div class="image-box two">
+                    <h6>Waist up</h6>
+                    <input type="file" accept="image/*" id="waistup" name="waistup">
+                    <label for="waistup">Upload</label>
+                </div>
+            </div>
+            <div>
+                <div class="image-box three">
+                    <h6>Close up</h6>
+                    <input type="file" accept="image/*" id="closeup" name="closeup">
+                    <label for="closeup">Upload</label>
+                </div>
+                <div class="image-box four">
+                    <h6>Side</h6>
+                    <input type="file" accept="image/*" id="sideimg" name="sideimg">
+                    <label for="sideimg">Upload</label>
+                </div>
+            </div>
+        </div>
+        <!--video sub-->
+        <div class="videosub">
+            <h2>Video submission</h2>
+            <div>
+                <h5 style="font-weight: 600;">Walking video</h5>
+                <p>Now that we have your photos, we'd like to see how you walk in full-length - with a brief, 30-second video. You should be fresh-faced, with no makeup and clean hair worn down. You're not walking the runway; a simple outfit will do. Skinny
+                    jeans and a sleeveless, plain colored top girls; form-fitting jeans and a solid t-shirt for guys.
+                    </br>
+                    Still not sure what to do?
+                    <a href="#headerPopup" id="headerVideoLink" target="_blank">Watch a sample walking video</a>
+                    <div id="headerPopup" class="mfp-hide embed-responsive embed-responsive-21by9">
+                        <iframe muted class="embed-responsive-item" width="854" height="480" src="https://www.youtube.com/embed/qN3OueBm9F4?autoplay=1" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </p>
+                <input type="file" accept="video/*" id="wvideo" name="wvideo">
+                <label for="wvideo">Upload walking video</label>
+            </div>
+            <div class="line"></div>
+            <div>
+                <h5 style="font-weight: 600;">Personality video</h5>
+                <p>We want to know more about you as a person. A funny story, something most people don’t know about you, or even favorite hobby. Get creative and show us who you are!
+                    </br>
+                    Still not sure what to do?
+                    <a href="#headerPopup1" id="headerVideoLink1" target="_blank">Watch a sample personality video</a>
+                    <div id="headerPopup1" class="mfp-hide embed-responsive embed-responsive-21by9">
+                        <iframe muted class="embed-responsive-item" width="854" height="480" src="https://www.youtube.com/embed/AM5jgcj1TJc" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </p>
+                <input type="file" accept="video/*" id="wvideo" name="wvideo">
+                <label for="wvideo">Upload Personality video</label>
+            </div>
+        </div>
+        <button type="submit">Submit now</button>
+    </form>
+    <!--Footer-->
+    <footer>
+        <h1>FAME</h1>
+        <div class=" pages ">
+            <h6><a href="index.html ">Home</a></h6>
+            <h6><a href="about.html ">About</a></h6>
+            <h6><a href="contact.html">Contact</a></h6>
+            <h6 class="end"><a href="work.html">Join Us</a></h6>
+        </div>
+        <div class="social">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/fameegypt/" target="_blank" role="button"><i
+                    class="fab fa-instagram fa-lg"></i></a>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/Fameeg-104402338261106" target="_blank" role="button"><i
+                    class="fab fa-facebook-f fa-lg"></i></a>
+            <!-- youtube -->
+            <a href="https://www.youtube.com/channel/UCaFXmtnI3_ek7wyeN6_pDbw" target="_blank" role="button"><i
+                    class="fab fa-youtube fa-lg"></i></a>
+            <!-- linkedin -->
+            <a href="https://www.linkedin.com/company/fameegypt" target="_blank" role="button"><i
+                    class="fab fa-linkedin-in fa-lg"></i></a>
+        </div>
+    </footer>
+    <!--Scripts-->
+    <script>
+        function addNewStyle(newStyle) {
+            var styleElement = document.getElementById('styles_js');
+            if (!styleElement) {
+                styleElement = document.createElement('style');
+                styleElement.type = 'text/css';
+                styleElement.id = 'styles_js';
+                document.getElementsByTagName('head')[0].appendChild(styleElement);
+            }
+            styleElement.appendChild(document.createTextNode(newStyle));
+        }
+        addNewStyle('#nav {flex-direction: column !important;}')
+        var prevScrollpos = window.pageYOffset;
+        if (window.matchMedia("(max-width: 750px)").matches) {
+            addNewStyle('#nav {flex-direction: row !important;}');
+        }
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos = currentScrollPos && window.matchMedia(" (min-width: 750px) ").matches) {
+                addNewStyle('#nav {flex-direction: row !important;}');
+            } else if (window.matchMedia(" (min-width: 750px) ").matches) {
+                addNewStyle('#nav {flex-direction: column !important;}');
+            }
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#headerVideoLink').magnificPopup({
+                type: 'inline',
+                midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+        });
+        $(document).ready(function() {
+            $('#headerVideoLink1').magnificPopup({
+                type: 'inline',
+                midClick: false // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+            });
+        });
+    </script>
+</body>
+
+</html>
